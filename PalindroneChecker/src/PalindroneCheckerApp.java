@@ -1,3 +1,5 @@
+import java.util.Stack;   // Stack class
+
 // Class acts as a container for program logic
 public class PalindroneCheckerApp {
 
@@ -5,30 +7,30 @@ public class PalindroneCheckerApp {
     public static void main(String[] args) {
 
         // Hardcoded string
-        String input = "radar";
+        String input = "madam";
 
-        // Convert string to character array (Data Structure: char[])
-        char[] characters = input.toCharArray();
+        // Data Structure: Stack
+        Stack<Character> stack = new Stack<>();
 
-        // Two-pointer technique
-        int start = 0;
-        int end = characters.length - 1;
+        // Push Operation - Insert characters into stack
+        for (int i = 0; i < input.length(); i++) {
+            stack.push(input.charAt(i));
+        }
 
         boolean isPalindrome = true;
 
-        // Compare characters from both ends
-        while (start < end) {
+        // Pop Operation - Remove characters and compare
+        for (int i = 0; i < input.length(); i++) {
 
-            if (characters[start] != characters[end]) {
+            char poppedChar = stack.pop();  // removes last inserted character
+
+            if (input.charAt(i) != poppedChar) {
                 isPalindrome = false;
                 break;
             }
-
-            start++;
-            end--;
         }
 
-        // Display result
+        // Print result
         System.out.println("Input String : " + input);
 
         if (isPalindrome) {
