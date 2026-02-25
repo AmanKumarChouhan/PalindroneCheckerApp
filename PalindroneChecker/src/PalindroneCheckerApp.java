@@ -1,36 +1,42 @@
-import java.util.Stack;   // Stack class
+import java.util.Stack;
+import java.util.Queue;
+import java.util.LinkedList;
 
 // Class acts as a container for program logic
-public class PalindroneCheckerApp {
+public class PalindroneCheckerApp{
 
     // Main method - Entry point of the application
     public static void main(String[] args) {
 
         // Hardcoded string
-        String input = "madam";
+        String input = "level";
 
-        // Data Structure: Stack
-        Stack<Character> stack = new Stack<>();
+        // Data Structures
+        Stack<Character> stack = new Stack<>();          // LIFO
+        Queue<Character> queue = new LinkedList<>();     // FIFO
 
-        // Push Operation - Insert characters into stack
+        // Push into stack and Enqueue into queue
         for (int i = 0; i < input.length(); i++) {
-            stack.push(input.charAt(i));
+            char ch = input.charAt(i);
+            stack.push(ch);       // LIFO
+            queue.add(ch);        // FIFO (enqueue)
         }
 
         boolean isPalindrome = true;
 
-        // Pop Operation - Remove characters and compare
-        for (int i = 0; i < input.length(); i++) {
+        // Compare dequeue (queue) vs pop (stack)
+        while (!stack.isEmpty()) {
 
-            char poppedChar = stack.pop();  // removes last inserted character
+            char fromStack = stack.pop();     // LIFO removal
+            char fromQueue = queue.remove();  // FIFO removal (dequeue)
 
-            if (input.charAt(i) != poppedChar) {
+            if (fromStack != fromQueue) {
                 isPalindrome = false;
                 break;
             }
         }
 
-        // Print result
+        // Display result
         System.out.println("Input String : " + input);
 
         if (isPalindrome) {
@@ -39,6 +45,6 @@ public class PalindroneCheckerApp {
             System.out.println("Result : It is NOT a Palindrome.");
         }
 
-        // Program exits after execution
+        // Program exits
     }
 }
