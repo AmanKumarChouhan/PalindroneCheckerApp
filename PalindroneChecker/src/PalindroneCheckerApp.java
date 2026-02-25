@@ -1,45 +1,31 @@
-import java.util.Scanner;
-
-// Class acts as a container for application logic
+// Class acts as a container for program logic
 public class PalindroneCheckerApp {
 
     // Main method - Entry point of the application
     public static void main(String[] args) {
 
-        // ---- UC1 : Startup Display ----
-        System.out.println("====================================");
-        System.out.println("     Welcome to Palindrone Checker");
-        System.out.println("====================================");
+        // Hardcoded string (Data Structure: String)
+        String original = "level";
 
-        System.out.println("Application Name : Palindrone Checker");
-        System.out.println("Version          : 1.0.0");
-        System.out.println("------------------------------------");
-
-        // ---- UC2 : Palindrome Logic ----
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Enter a word or number: ");
-        String input = scanner.nextLine();
-
-        // Remove spaces and convert to lowercase
-        String processedInput = input.replaceAll("\\s+", "").toLowerCase();
-
-        // Reverse the string
+        // Variable to store reversed string
         String reversed = "";
-        for (int i = processedInput.length() - 1; i >= 0; i--) {
-            reversed += processedInput.charAt(i);
+
+        // Loop (for loop) - reverse the string
+        for (int i = original.length() - 1; i >= 0; i--) {
+            reversed = reversed + original.charAt(i);  // String Concatenation
         }
 
-        // Check palindrome
-        if (processedInput.equals(reversed)) {
-            System.out.println("Result: \"" + input + "\" is a Palindrome ✅");
+        // Compare original and reversed using equals() method
+        if (original.equals(reversed)) {
+            System.out.println("Original String : " + original);
+            System.out.println("Reversed String : " + reversed);
+            System.out.println("Result : It is a Palindrome.");
         } else {
-            System.out.println("Result: \"" + input + "\" is NOT a Palindrome ❌");
+            System.out.println("Original String : " + original);
+            System.out.println("Reversed String : " + reversed);
+            System.out.println("Result : It is NOT a Palindrome.");
         }
 
-        System.out.println("------------------------------------");
-        System.out.println("Application Ended.");
-
-        scanner.close();
+        // Program exits after execution
     }
 }
